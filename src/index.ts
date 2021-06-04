@@ -1,8 +1,8 @@
 import { Options } from "graphql-yoga";
 import { createConnection } from "typeorm";
 import "./env";
-import connectionOptions from "./typeorm-config";
 import server from "./server";
+import connectionOptions from "./typeorm-config";
 
 const PORT: number | string = process.env.PORT || 4000;
 const PLAYGROUND_ENDPOINT: string = "/playground";
