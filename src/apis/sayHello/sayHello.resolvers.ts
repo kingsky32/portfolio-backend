@@ -1,4 +1,4 @@
-export default {
+const resolvers = {
   Query: {
     sayHello: () => {
       return "hello";
