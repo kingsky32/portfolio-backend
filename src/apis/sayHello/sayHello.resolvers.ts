@@ -1,7 +1,5 @@
-const resolvers = {
+export default {
   Query: {
-    sayHello: () => {
-      return "hello";
-    },
+    SayHello: () => "hello",
   },
 };
