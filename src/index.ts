@@ -1,4 +1,7 @@
 import { Options } from "graphql-yoga";
+import { createConnection } from "typeorm";
+import "./env";
+import connectionOptions from "./ormConfig";
 import server from "./server";
 
 const PORT: number | string = process.env.PORT || 4000;
@@ -16,4 +19,8 @@ const handleAppStat = () =>
     `✅ Server running on http://localhost:${PORT} Go to Playground http://localhost:${PORT}/playground`
   );
 
-server.start(appOptions, handleAppStat);
+createConnection(connectionOptions)
+  .then(() => {
+    server.start(appOptions, handleAppStat);
+  })
+  .catch((error) => console.log(error));
