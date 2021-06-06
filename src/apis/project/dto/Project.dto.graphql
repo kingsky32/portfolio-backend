@@ -1,0 +1,17 @@
+scalar Date
+
+type Project {
+  id: Int
+  accountId: Int
+  type: String
+  platform: String
+  title: String
+  thumbnail: Int
+  github: String
+  page: String
+  tools: [String]
+  startAt: Date
+  endAt: Date
+  createdAt: Date
+  updatedAt: Date
+}
