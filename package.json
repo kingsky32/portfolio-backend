@@ -5,7 +5,14 @@
   "repository": "https://github.com/kingsky32/portfolio-backend.git",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon 'src/index.ts' --exec 'ts-node' src/server.ts -e ts,graphql"
+    "predev": "npm run types",
+    "dev": "nodemon 'src/index.ts' --exec 'ts-node' src/server.ts -e ts,graphql",
+    "pretypes": "gql-merge --out-file ./src/schema.graphql ./src/api/**/*.graphql",
+    "types": "graphql-to-typescript ./src/schema.graphql ./src/types/graph.d.ts",
+    "prebuild": "rm -rf dist",
+    "build": "tsc",
+    "postbuild": "cd src && copy ./api/**/*.graphql ../dist/api",
+    "start": "cd dist && node ."
   },
   "dependencies": {
     "@graphql-toolkit/schema-merging": "^0.10.7",
