@@ -17,7 +17,7 @@ export enum ProjectToolTypes {
   'styled-components',
 }
 
-export interface CreateProjectMutationProps {
+export interface ProjectMutationProps {
   type?: ProjectTypeTypes;
   platform?: ProjectPlatformType;
   title?: string;
@@ -29,7 +29,7 @@ export interface CreateProjectMutationProps {
   endAt?: Date;
 }
 
-export interface ProjectProps extends CreateProjectMutationProps {
+export interface ProjectProps extends ProjectMutationProps {
   id: number;
   accountId: number;
   createdAt: Date;

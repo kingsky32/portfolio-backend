@@ -1,9 +1,9 @@
 import Project from '../../entities/Project.entities';
-import { CreateProjectMutationProps } from '../../types/project';
+import { ProjectMutationProps } from '../../types/project';
 
 export default {
   Mutation: {
-    CreateProject: async (_, body: CreateProjectMutationProps) => {
+    CreateProject: async (_, body: ProjectMutationProps) => {
       try {
         const data = await Project.create(body).save();
         return data;
