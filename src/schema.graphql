@@ -1,0 +1,28 @@
+type Mutation {
+  CreateProject(type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Project
+  DeleteProject(id: Int!): Boolean
+  UpdateProject(id: Int!, type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Boolean
+}
+
+type Query {
+  GetProject(id: Int!): Project
+  GetProjects: [Project]
+}
+
+scalar Date
+
+type Project {
+  id: Int
+  accountId: Int
+  type: String
+  platform: String
+  title: String
+  thumbnail: Int
+  github: String
+  page: String
+  tools: [String]
+  startAt: Date
+  endAt: Date
+  createdAt: Date
+  updatedAt: Date
+}
