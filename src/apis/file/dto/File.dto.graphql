@@ -1,0 +1,10 @@
+scalar Date
+
+type File {
+  id: Int!
+  url: String!
+  filename: String!
+  mimetype: String!
+  encoding: String!
+  createdAt: Date
+}
