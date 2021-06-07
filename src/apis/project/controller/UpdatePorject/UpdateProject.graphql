@@ -10,5 +10,5 @@ type Mutation {
     tools: [String]
     startAt: Date
     endAt: Date
-  ): Boolean
+  ): Boolean!
 }
