@@ -14,7 +14,7 @@ export default {
           Key: key,
           ContentType: mimetype,
         });
-        await File.create({
+        return await File.create({
           url: data.Location,
           filename,
           mimetype,

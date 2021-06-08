@@ -1,9 +1,5 @@
 scalar Upload
 
-type Query {
-  uploads: [File]
-}
-
 type File {
   id: Int!
   url: String!
