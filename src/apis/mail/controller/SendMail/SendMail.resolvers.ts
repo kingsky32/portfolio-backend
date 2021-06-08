@@ -3,10 +3,10 @@ import sendMail from '../../../../utils/sendMail';
 
 export default {
   Mutation: {
-    SendMail: async (_, body) => {
+    SendMail: async (_, args) => {
       try {
         const mailOptions: MailOptions = {
-          ...body,
+          ...args,
         };
         const data = await sendMail(mailOptions);
         if (data) {

@@ -2,9 +2,9 @@ import Project from '../../entities/Project.entities';
 
 export default {
   Mutation: {
-    DeleteProject: async (_, body) => {
+    DeleteProject: async (_, args) => {
       try {
-        const { id } = body;
+        const { id } = args;
         await Project.delete({ id });
         return true;
       } catch (error) {

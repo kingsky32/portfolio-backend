@@ -1,22 +1,26 @@
 scalar Upload
 
 type Mutation {
-  SingleUpload(file: Upload!): Number
+  SingleUpload(file: Upload!): File
   SendMail(from: String!, to: String!, subject: String, text: String, html: String): Boolean!
   CreateProject(type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Project
   DeleteProject(id: Int!): Boolean!
   UpdateProject(id: Int!, type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Boolean!
 }
 
+type Query {
+  uploads: [File]
+  GetProject(id: Int!): Project
+  GetProjects: [Project]
+}
+
 type File {
+  id: Int!
+  url: String!
   filename: String!
   mimetype: String!
   encoding: String!
-}
-
-type Query {
-  GetProject(id: Int!): Project
-  GetProjects: [Project]
+  createdAt: Date
 }
 
 scalar Date

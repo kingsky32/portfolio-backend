@@ -1,4 +1,8 @@
-scalar Date
+scalar Upload
+
+type Query {
+  uploads: [File]
+}
 
 type File {
   id: Int!

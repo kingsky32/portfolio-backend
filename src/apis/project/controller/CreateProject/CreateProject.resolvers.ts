@@ -3,9 +3,9 @@ import { ProjectMutationProps } from '../../types/project';
 
 export default {
   Mutation: {
-    CreateProject: async (_, body: ProjectMutationProps) => {
+    CreateProject: async (_, args: ProjectMutationProps) => {
       try {
-        const data = await Project.create(body).save();
+        const data = await Project.create(args).save();
         return data;
       } catch (error) {
         throw error;

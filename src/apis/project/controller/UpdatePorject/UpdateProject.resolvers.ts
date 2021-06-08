@@ -3,10 +3,10 @@ import { ProjectProps } from '../../types/project';
 
 export default {
   Mutation: {
-    UpdateProject: async (_, body: ProjectProps) => {
+    UpdateProject: async (_, args: ProjectProps) => {
       try {
-        const { id } = body;
-        await Project.update({ id }, body);
+        const { id } = args;
+        await Project.update({ id }, args);
         return true;
       } catch (error) {
         throw error;
