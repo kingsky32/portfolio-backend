@@ -28,6 +28,9 @@ class Project extends BaseEntity {
   @Column({ type: 'text', nullable: true })
   caption: string;
 
+  @Column({ type: 'text', nullable: true })
+  meta: string;
+
   @Column({ type: 'int', nullable: true })
   thumbnail: number;
 

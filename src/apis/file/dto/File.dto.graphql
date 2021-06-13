@@ -5,6 +5,5 @@ type File {
   url: String!
   filename: String!
   mimetype: String!
-  encoding: String!
   createdAt: Date
 }

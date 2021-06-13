@@ -1,0 +1,5 @@
+scalar Upload
+
+type Mutation {
+  CreateFile(file: Upload!): File
+}

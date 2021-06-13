@@ -1,10 +1,10 @@
 import uniqid from 'uniqid';
-import { uploadS3 } from '../../../utils/s3Uploader';
-import File from '../entities/File.entities';
+import { uploadS3 } from '../../../../utils/s3Uploader';
+import File from '../../entities/File.entities';
 
 export default {
   Mutation: {
-    SingleUpload: async (_, { file }) => {
+    CreateFile: async (_, { file }) => {
       try {
         const { createReadStream, filename, mimetype } = await file;
         const fileStream = createReadStream();

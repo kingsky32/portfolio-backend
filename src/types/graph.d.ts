@@ -1,14 +1,33 @@
-export const typeDefs = ["scalar Upload\n\ntype Mutation {\n  SingleUpload(file: Upload!): File\n  SendMail(from: String!, to: String!, subject: String, text: String, html: String): Boolean!\n  CreateProject(type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Project\n  DeleteProject(id: Int!): Boolean!\n  UpdateProject(id: Int!, type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Boolean!\n}\n\ntype File {\n  id: Int!\n  url: String!\n  filename: String!\n  mimetype: String!\n  encoding: String!\n  createdAt: Date\n}\n\ntype Query {\n  GetProject(id: Int!): Project\n  GetProjects: [Project]\n}\n\nscalar Date\n\ntype Project {\n  id: Int\n  accountId: Int\n  type: String\n  platform: String\n  title: String\n  thumbnail: Int\n  github: String\n  page: String\n  tools: [String]\n  startAt: Date\n  endAt: Date\n  createdAt: Date\n  updatedAt: Date\n}\n"];
+export const typeDefs = ["scalar Upload\n\ntype Mutation {\n  CreateFile(file: Upload!): File\n  SendMail(from: String!, to: String!, subject: String, text: String, html: String): Boolean!\n  CreateProject(type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Project\n  DeleteProject(id: Int!): Boolean!\n  UpdateProject(id: Int!, type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Boolean!\n}\n\ntype Query {\n  GetFile(id: Int!): File\n  GetProject(id: Int!): Project\n  GetProjects(maxResults: Int): [Project]\n}\n\ntype File {\n  id: Int!\n  url: String!\n  filename: String!\n  mimetype: String!\n  createdAt: Date\n}\n\nscalar Date\n\ntype Project {\n  id: Int\n  accountId: Int\n  type: String\n  platform: String\n  title: String\n  caption: String\n  meta: String\n  thumbnail: Int\n  github: String\n  page: String\n  tools: [String]\n  startAt: Date\n  endAt: Date\n  createdAt: Date\n  updatedAt: Date\n}\n"];
 /* tslint:disable */
 
 export interface Query {
+  GetFile: File | null;
   GetProject: Project | null;
   GetProjects: Array<Project> | null;
+}
+
+export interface GetFileQueryArgs {
+  id: number;
 }
 
 export interface GetProjectQueryArgs {
   id: number;
 }
+
+export interface GetProjectsQueryArgs {
+  maxResults: number | null;
+}
+
+export interface File {
+  id: number;
+  url: string;
+  filename: string;
+  mimetype: string;
+  createdAt: Date | null;
+}
+
+export type Date = any;
 
 export interface Project {
   id: number | null;
@@ -16,6 +35,8 @@ export interface Project {
   type: string | null;
   platform: string | null;
   title: string | null;
+  caption: string | null;
+  meta: string | null;
   thumbnail: number | null;
   github: string | null;
   page: string | null;
@@ -26,17 +47,15 @@ export interface Project {
   updatedAt: Date | null;
 }
 
-export type Date = any;
-
 export interface Mutation {
-  SingleUpload: File | null;
+  CreateFile: File | null;
   SendMail: boolean;
   CreateProject: Project | null;
   DeleteProject: boolean;
   UpdateProject: boolean;
 }
 
-export interface SingleUploadMutationArgs {
+export interface CreateFileMutationArgs {
   file: Upload;
 }
 
@@ -78,12 +97,3 @@ export interface UpdateProjectMutationArgs {
 }
 
 export type Upload = any;
-
-export interface File {
-  id: number;
-  url: string;
-  filename: string;
-  mimetype: string;
-  encoding: string;
-  createdAt: Date | null;
-}
