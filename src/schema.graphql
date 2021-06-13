@@ -8,12 +8,6 @@ type Mutation {
   UpdateProject(id: Int!, type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Boolean!
 }
 
-type Query {
-  uploads: [File]
-  GetProject(id: Int!): Project
-  GetProjects: [Project]
-}
-
 type File {
   id: Int!
   url: String!
@@ -21,6 +15,11 @@ type File {
   mimetype: String!
   encoding: String!
   createdAt: Date
+}
+
+type Query {
+  GetProject(id: Int!): Project
+  GetProjects: [Project]
 }
 
 scalar Date
@@ -31,6 +30,7 @@ type Project {
   type: String
   platform: String
   title: String
+  caption: String
   thumbnail: Int
   github: String
   page: String

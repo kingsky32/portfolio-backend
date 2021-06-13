@@ -6,6 +6,7 @@ type Project {
   type: String
   platform: String
   title: String
+  caption: String
   thumbnail: Int
   github: String
   page: String

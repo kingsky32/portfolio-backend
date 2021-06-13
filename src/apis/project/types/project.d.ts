@@ -21,6 +21,7 @@ export interface ProjectMutationProps {
   type?: ProjectTypeTypes;
   platform?: ProjectPlatformType;
   title?: string;
+  caption?: string;
   thumbnail?: number;
   github?: string;
   page?: string;
