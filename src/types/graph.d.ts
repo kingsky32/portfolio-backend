@@ -1,4 +1,4 @@
-export const typeDefs = ["scalar Upload\n\ntype Mutation {\n  CreateFile(file: Upload!): File\n  SendMail(from: String!, to: String!, subject: String, text: String, html: String): Boolean!\n  CreateProject(type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Project\n  DeleteProject(id: Int!): Boolean!\n  UpdateProject(id: Int!, type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Boolean!\n}\n\ntype Query {\n  GetFile(id: Int!): File\n  GetProject(id: Int!): Project\n  GetProjects(maxResults: Int): [Project]\n}\n\ntype File {\n  id: Int!\n  url: String!\n  filename: String!\n  mimetype: String!\n  createdAt: Date\n}\n\nscalar Date\n\ntype Project {\n  id: Int\n  accountId: Int\n  type: String\n  platform: String\n  title: String\n  caption: String\n  meta: String\n  thumbnail: Int\n  github: String\n  page: String\n  tools: [String]\n  startAt: Date\n  endAt: Date\n  createdAt: Date\n  updatedAt: Date\n}\n"];
+export const typeDefs = ["scalar Upload\n\ntype Mutation {\n  CreateFile(file: Upload!): File\n  SendMail(from: String!, to: String!, subject: String, text: String): Boolean!\n  CreateProject(type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Project\n  DeleteProject(id: Int!): Boolean!\n  UpdateProject(id: Int!, type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Boolean!\n}\n\ntype Query {\n  GetFile(id: Int!): File\n  GetProject(id: Int!): Project\n  GetProjects(maxResults: Int): [Project]\n}\n\ntype File {\n  id: Int!\n  url: String!\n  filename: String!\n  mimetype: String!\n  createdAt: Date\n}\n\nscalar Date\n\ntype Project {\n  id: Int\n  accountId: Int\n  type: String\n  platform: String\n  title: String\n  caption: String\n  meta: String\n  thumbnail: Int\n  github: String\n  page: String\n  tools: [String]\n  startAt: Date\n  endAt: Date\n  createdAt: Date\n  updatedAt: Date\n}\n"];
 /* tslint:disable */
 
 export interface Query {
@@ -64,7 +64,6 @@ export interface SendMailMutationArgs {
   to: string;
   subject: string | null;
   text: string | null;
-  html: string | null;
 }
 
 export interface CreateProjectMutationArgs {

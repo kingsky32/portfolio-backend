@@ -1,7 +1,7 @@
 import cors from 'cors';
 import { GraphQLServer } from 'graphql-yoga';
 import helmet from 'helmet';
-import logger from 'morgan';
+import morgan from 'morgan';
 import schema from './schema';
 
 const server: GraphQLServer = new GraphQLServer({
@@ -12,6 +12,6 @@ server.express.use(cors());
 server.express.use(
   helmet({ contentSecurityPolicy: process.env.NODE_ENV === 'production' ? undefined : false })
 );
-server.express.use(logger('dev'));
+server.express.use(morgan('dev'));
 
 export default server;
