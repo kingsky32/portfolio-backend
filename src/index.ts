@@ -6,7 +6,7 @@ import connectionOptions from "./typeorm-config";
 
 const PORT: number | string = process.env.PORT || 4000;
 const PLAYGROUND_ENDPOINT: string = "/playground";
-const GRAPHQL_ENDPOINT: string = "/graphql";
+const GRAPHQL_ENDPOINT: string = "/api";
 
 const appOptions: Options = {
   port: PORT,

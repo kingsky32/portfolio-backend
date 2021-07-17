@@ -1,3 +1,8 @@
+type SendMailPayload {
+  result: Boolean
+  error: String
+}
+
 type Mutation {
-  SendMail(from: String!, to: String!, subject: String, text: String): Boolean!
+  SendMail(from: String!, to: String!, subject: String, text: String): SendMailPayload!
 }

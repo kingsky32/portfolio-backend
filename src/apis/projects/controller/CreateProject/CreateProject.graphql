@@ -1,0 +1,18 @@
+type CreateProjectPayload {
+  project: Project
+  error: String
+}
+
+type Mutation {
+  CreateProject(
+    type: String
+    platform: String
+    title: String
+    thumbnail: Int
+    github: String
+    page: String
+    tools: [String]
+    startAt: Date
+    endAt: Date
+  ): CreateProjectPayload
+}

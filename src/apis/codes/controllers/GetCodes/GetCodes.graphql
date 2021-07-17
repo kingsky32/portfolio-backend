@@ -1,0 +1,8 @@
+type GetCodesPayload {
+  codes: [Code]!
+  error: String
+}
+
+type Query {
+  GetCodes: GetCodesPayload
+}

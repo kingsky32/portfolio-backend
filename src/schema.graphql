@@ -1,18 +1,26 @@
-scalar Upload
-
 type Mutation {
+  CreateCode(code: String!, label: String!): Code!
+  UpdateCode(code: String!, label: String!): Code!
   CreateFile(file: Upload!): File
   SendMail(from: String!, to: String!, subject: String, text: String): Boolean!
   CreateProject(type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Project
   DeleteProject(id: Int!): Boolean!
-  UpdateProject(id: Int!, type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Boolean!
+  UpdateProject(id: Int!, type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Project!
 }
 
 type Query {
+  GetCodes: [Code]!
   GetFile(id: Int!): File
   GetProject(id: Int!): Project
   GetProjects(maxResults: Int): [Project]
 }
+
+type Code {
+  code: String!
+  label: String!
+}
+
+scalar Upload
 
 type File {
   id: Int!

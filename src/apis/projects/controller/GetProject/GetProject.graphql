@@ -1,0 +1,8 @@
+type GetProjectPayload {
+  project: Project
+  error: String
+}
+
+type Query {
+  GetProject(id: Int!): GetProjectPayload
+}

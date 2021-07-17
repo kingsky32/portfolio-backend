@@ -1,0 +1,8 @@
+type CreateCodePayload {
+  code: Code
+  error: String
+}
+
+type Mutation {
+  CreateCode(code: String!, label: String!): CreateCodePayload!
+}

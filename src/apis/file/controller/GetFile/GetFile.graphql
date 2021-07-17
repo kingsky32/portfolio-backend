@@ -1,3 +1,0 @@
-type Query {
-  GetFile(id: Int!): File
-}

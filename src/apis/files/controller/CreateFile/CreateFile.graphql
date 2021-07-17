@@ -1,0 +1,10 @@
+scalar Upload
+
+type CreateFilePayload {
+  file: File
+  error: String
+}
+
+type Mutation {
+  CreateFile(file: Upload!): CreateFilePayload!
+}

@@ -1,0 +1,8 @@
+type DeleteCodePayload {
+  code: Code
+  error: String
+}
+
+type Mutation {
+  DeleteCode(code: String!): DeleteCodePayload!
+}

@@ -1,0 +1,19 @@
+type UpdateProjectsPayload {
+  project: Project
+  error: String
+}
+
+type Mutation {
+  UpdateProject(
+    id: Int!
+    type: String
+    platform: String
+    title: String
+    thumbnail: Int
+    github: String
+    page: String
+    tools: [String]
+    startAt: Date
+    endAt: Date
+  ): UpdateProjectsPayload!
+}

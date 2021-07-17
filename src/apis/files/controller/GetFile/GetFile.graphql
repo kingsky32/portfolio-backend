@@ -1,0 +1,8 @@
+type GetFilePayload {
+  file: File
+  error: String
+}
+
+type Query {
+  GetFile(id: Int!): GetFilePayload!
+}

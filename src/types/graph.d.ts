@@ -1,7 +1,8 @@
-export const typeDefs = ["scalar Upload\n\ntype Mutation {\n  CreateFile(file: Upload!): File\n  SendMail(from: String!, to: String!, subject: String, text: String): Boolean!\n  CreateProject(type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Project\n  DeleteProject(id: Int!): Boolean!\n  UpdateProject(id: Int!, type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Boolean!\n}\n\ntype Query {\n  GetFile(id: Int!): File\n  GetProject(id: Int!): Project\n  GetProjects(maxResults: Int): [Project]\n}\n\ntype File {\n  id: Int!\n  url: String!\n  filename: String!\n  mimetype: String!\n  createdAt: Date\n}\n\nscalar Date\n\ntype Project {\n  id: Int\n  accountId: Int\n  type: String\n  platform: String\n  title: String\n  caption: String\n  meta: String\n  thumbnail: Int\n  github: String\n  page: String\n  tools: [String]\n  startAt: Date\n  endAt: Date\n  createdAt: Date\n  updatedAt: Date\n}\n"];
+export const typeDefs = ["type Mutation {\n  CreateCode(code: String!, label: String!): Code!\n  UpdateCode(code: String!, label: String!): Code!\n  CreateFile(file: Upload!): File\n  SendMail(from: String!, to: String!, subject: String, text: String): Boolean!\n  CreateProject(type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Project\n  DeleteProject(id: Int!): Boolean!\n  UpdateProject(id: Int!, type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Project!\n}\n\ntype Query {\n  GetCodes: [Code]!\n  GetFile(id: Int!): File\n  GetProject(id: Int!): Project\n  GetProjects(maxResults: Int): [Project]\n}\n\ntype Code {\n  code: String!\n  label: String!\n}\n\nscalar Upload\n\ntype File {\n  id: Int!\n  url: String!\n  filename: String!\n  mimetype: String!\n  createdAt: Date\n}\n\nscalar Date\n\ntype Project {\n  id: Int\n  accountId: Int\n  type: String\n  platform: String\n  title: String\n  caption: String\n  meta: String\n  thumbnail: Int\n  github: String\n  page: String\n  tools: [String]\n  startAt: Date\n  endAt: Date\n  createdAt: Date\n  updatedAt: Date\n}\n"];
 /* tslint:disable */
 
 export interface Query {
+  GetCodes: Array<Code>;
   GetFile: File | null;
   GetProject: Project | null;
   GetProjects: Array<Project> | null;
@@ -17,6 +18,11 @@ export interface GetProjectQueryArgs {
 
 export interface GetProjectsQueryArgs {
   maxResults: number | null;
+}
+
+export interface Code {
+  code: string;
+  label: string;
 }
 
 export interface File {
@@ -48,11 +54,23 @@ export interface Project {
 }
 
 export interface Mutation {
+  CreateCode: Code;
+  UpdateCode: Code;
   CreateFile: File | null;
   SendMail: boolean;
   CreateProject: Project | null;
   DeleteProject: boolean;
-  UpdateProject: boolean;
+  UpdateProject: Project;
+}
+
+export interface CreateCodeMutationArgs {
+  code: string;
+  label: string;
+}
+
+export interface UpdateCodeMutationArgs {
+  code: string;
+  label: string;
 }
 
 export interface CreateFileMutationArgs {
