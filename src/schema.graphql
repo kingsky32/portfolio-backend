@@ -1,18 +1,39 @@
+type CreateCodePayload {
+  code: Code
+  error: String
+}
+
 type Mutation {
-  CreateCode(code: String!, label: String!): Code!
-  UpdateCode(code: String!, label: String!): Code!
-  CreateFile(file: Upload!): File
-  SendMail(from: String!, to: String!, subject: String, text: String): Boolean!
-  CreateProject(type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Project
-  DeleteProject(id: Int!): Boolean!
-  UpdateProject(id: Int!, type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Project!
+  CreateCode(code: String!, label: String!): CreateCodePayload!
+  DeleteCode(code: String!): DeleteCodePayload!
+  UpdateCode(code: String!, label: String!): UpdateCodePayload!
+  CreateFile(file: Upload!): CreateFilePayload!
+  SendMail(from: String!, to: String!, subject: String, text: String): SendMailPayload!
+  CreateProject(type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): CreateProjectPayload
+  DeleteProject(id: Int!): DeleteProjectPayload!
+  UpdateProject(id: Int!, type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): UpdateProjectsPayload!
+}
+
+type DeleteCodePayload {
+  code: Code
+  error: String
+}
+
+type GetCodesPayload {
+  codes: [Code]!
+  error: String
 }
 
 type Query {
-  GetCodes: [Code]!
-  GetFile(id: Int!): File
-  GetProject(id: Int!): Project
-  GetProjects(maxResults: Int): [Project]
+  GetCodes: GetCodesPayload
+  GetFile(id: Int!): GetFilePayload!
+  GetProject(id: Int!): GetProjectPayload
+  GetProjects: GetProjectsPayload!
+}
+
+type UpdateCodePayload {
+  code: Code
+  error: String
 }
 
 type Code {
@@ -22,12 +43,52 @@ type Code {
 
 scalar Upload
 
+type CreateFilePayload {
+  file: File
+  error: String
+}
+
+type GetFilePayload {
+  file: File
+  error: String
+}
+
 type File {
   id: Int!
   url: String!
   filename: String!
   mimetype: String!
   createdAt: Date
+}
+
+type SendMailPayload {
+  result: Boolean
+  error: String
+}
+
+type CreateProjectPayload {
+  project: Project
+  error: String
+}
+
+type DeleteProjectPayload {
+  project: Project
+  error: String
+}
+
+type GetProjectPayload {
+  project: Project
+  error: String
+}
+
+type GetProjectsPayload {
+  projects: [Project]!
+  error: String
+}
+
+type UpdateProjectsPayload {
+  project: Project
+  error: String
 }
 
 scalar Date

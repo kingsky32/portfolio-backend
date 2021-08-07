@@ -4,5 +4,5 @@ type GetProjectsPayload {
 }
 
 type Query {
-  GetProjects: GetProjectsPayload!
+  projects(maxResults: Int): GetProjectsPayload!
 }

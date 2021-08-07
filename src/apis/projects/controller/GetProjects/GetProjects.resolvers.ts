@@ -3,7 +3,7 @@ import { ProjectsPayloadProps } from '../../types/projects.d';
 
 export default {
   Query: {
-    GetProjects: async (): Promise<ProjectsPayloadProps> => {
+    projects: async (): Promise<ProjectsPayloadProps> => {
       try {
         const data = await Projects.find();
         return {
