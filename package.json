@@ -12,7 +12,6 @@
     "prebuild": "rm -rf dist",
     "build": "tsc",
     "postbuild": "cd src && copy ./apis/**/*.graphql ../dist/apis",
-    "preinstall": "npx npm-force-resolutions",
     "start": "cd dist && node ."
   },
   "dependencies": {
