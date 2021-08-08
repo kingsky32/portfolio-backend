@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'portfolio-server',
-      script: 'npm',
+      script: 'yarn',
       args: 'start',
       watch: false,
       ignore_watch: ['[/\\]./', 'node_modules', 'logs'],
