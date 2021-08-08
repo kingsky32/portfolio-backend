@@ -1,8 +1,3 @@
-type UpdateProjectsPayload {
-  project: Project
-  error: String
-}
-
 type Mutation {
   UpdateProject(
     id: Int!
@@ -15,5 +10,5 @@ type Mutation {
     tools: [String]
     startAt: Date
     endAt: Date
-  ): UpdateProjectsPayload!
+  ): Project!
 }

@@ -1,14 +1,14 @@
+import { CodeProps } from './../../types/codes.d';
 import Codes from '../../entities/Code.entities';
-import { CodesPayloadProps } from '../../types/codes.d';
 
 export default {
   Query: {
-    GetCodes: async (): Promise<CodesPayloadProps> => {
+    GetCodes: async (): Promise<CodeProps[]> => {
       try {
         const data = await Codes.find();
-        return { codes: data, error: null };
+        return data;
       } catch (error) {
-        return { codes: [], error };
+        throw error;
       }
     },
   },

@@ -1,15 +1,15 @@
+import { CodeProps } from './../../types/codes.d';
 import Codes from '../../entities/Code.entities';
-import { CodePayloadProps } from '../../types/codes';
 
 export default {
   Mutation: {
-    DeleteCode: async (_, args: { code: string }): Promise<CodePayloadProps> => {
+    DeleteCode: async (_, args: { code: string }): Promise<CodeProps> => {
       try {
         const { code } = args;
         const data = await Codes.delete({ code });
-        return { code: data.raw, error: null };
+        return data.raw;
       } catch (error) {
-        return { code: null, error };
+        throw error;
       }
     },
   },

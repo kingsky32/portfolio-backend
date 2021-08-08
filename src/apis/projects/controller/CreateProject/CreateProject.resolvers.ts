@@ -1,20 +1,15 @@
+import { ProjectProps } from './../../types/projects.d';
 import Projects from '../../entities/Projects.entities';
-import { ProjectMutationProps, ProjectPayloadProps } from '../../types/projects';
+import { ProjectMutationProps } from '../../types/projects';
 
 export default {
   Mutation: {
-    CreateProject: async (_, args: ProjectMutationProps): Promise<ProjectPayloadProps> => {
+    CreateProject: async (_, args: ProjectMutationProps): Promise<ProjectProps> => {
       try {
         const data = await Projects.create(args).save();
-        return {
-          project: data,
-          error: null,
-        };
+        return data;
       } catch (error) {
-        return {
-          project: null,
-          error,
-        };
+        throw error;
       }
     },
   },

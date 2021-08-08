@@ -29,13 +29,3 @@ export interface ProjectProps {
 
 export interface ProjectMutationProps
   extends Omit<ProjectProps, 'id' | 'accountId' | 'createdAt' | 'updatedAt'> {}
-
-export interface ProjectsPayloadProps {
-  projects: ProjectProps[] | undefined | null;
-  error: string | undefined | null;
-}
-
-export interface ProjectPayloadProps {
-  project: ProjectProps | undefined | null;
-  error: string | undefined | null;
-}

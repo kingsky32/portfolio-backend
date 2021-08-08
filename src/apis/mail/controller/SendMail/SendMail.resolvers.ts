@@ -1,10 +1,9 @@
 import { MailOptions } from 'nodemailer/lib/json-transport';
 import sendMail from '../../../../utils/sendMail';
-import { SendMailPayloadProps } from '../../types/mail.d';
 
 export default {
   Mutation: {
-    SendMail: async (_, args): Promise<SendMailPayloadProps> => {
+    SendMail: async (_, args): Promise<boolean> => {
       try {
         const mailOptions: MailOptions = {
           ...args,
@@ -13,15 +12,9 @@ export default {
         if (!data) {
           throw Error('Not Found');
         }
-        return {
-          result: true,
-          error: null,
-        };
+        return true;
       } catch (error) {
-        return {
-          result: null,
-          error,
-        };
+        throw error;
       }
     },
   },

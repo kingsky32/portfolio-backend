@@ -1,11 +1,11 @@
 import uniqid from 'uniqid';
 import { uploadS3 } from '../../../../utils/s3Uploader';
 import Files from '../../entities/Files.entities';
-import { FilePayload } from '../../types/files';
+import { FileProps } from '../../types/files';
 
 export default {
   Mutation: {
-    CreateFile: async (_, { file }): Promise<FilePayload> => {
+    CreateFile: async (_, { file }): Promise<FileProps> => {
       try {
         const { createReadStream, filename, mimetype } = await file;
         const fileStream = createReadStream();
@@ -20,16 +20,9 @@ export default {
           filename,
           mimetype,
         }).save();
-
-        return {
-          file: data,
-          error: null,
-        };
+        return data;
       } catch (error) {
-        return {
-          file: null,
-          error,
-        };
+        throw error;
       }
     },
   },

@@ -1,8 +1,3 @@
-type DeleteProjectPayload {
-  project: Project
-  error: String
-}
-
 type Mutation {
-  DeleteProject(id: Int!): DeleteProjectPayload!
+  DeleteProject(id: Int!): Project!
 }

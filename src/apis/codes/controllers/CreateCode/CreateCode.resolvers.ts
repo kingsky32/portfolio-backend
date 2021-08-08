@@ -1,20 +1,14 @@
 import Codes from '../../entities/Code.entities';
-import { CodeMutationProps, CodePayloadProps } from '../../types/codes';
+import { CodeMutationProps, CodeProps } from '../../types/codes';
 
 export default {
   Mutation: {
-    CreateCode: async (_, args: CodeMutationProps): Promise<CodePayloadProps> => {
+    CreateCode: async (_, args: CodeMutationProps): Promise<CodeProps> => {
       try {
         const data = await Codes.create(args).save();
-        return {
-          code: data,
-          error: null,
-        };
+        return data;
       } catch (error) {
-        return {
-          code: null,
-          error,
-        };
+        throw error;
       }
     },
   },

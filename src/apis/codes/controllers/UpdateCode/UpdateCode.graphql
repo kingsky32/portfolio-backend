@@ -1,8 +1,3 @@
-type UpdateCodePayload {
-  code: Code
-  error: String
-}
-
 type Mutation {
-  UpdateCode(code: String!, label: String!): UpdateCodePayload!
+  UpdateCode(code: String!, label: String!): Code!
 }

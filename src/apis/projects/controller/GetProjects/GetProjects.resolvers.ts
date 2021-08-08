@@ -1,20 +1,14 @@
 import Projects from '../../entities/Projects.entities';
-import { ProjectsPayloadProps } from '../../types/projects.d';
+import { ProjectProps } from '../../types/projects';
 
 export default {
   Query: {
-    projects: async (): Promise<ProjectsPayloadProps> => {
+    GetProjects: async (): Promise<ProjectProps[]> => {
       try {
         const data = await Projects.find();
-        return {
-          projects: data,
-          error: null,
-        };
+        return data;
       } catch (error) {
-        return {
-          projects: null,
-          error,
-        };
+        throw error;
       }
     },
   },

@@ -7,8 +7,3 @@ export interface FileProps {
 }
 
 export interface FileMutationProps extends Omit<FileProps, 'id' | 'createdAt'> {}
-
-export interface FilePayload {
-  file: FileProps | null | undefined;
-  error: string | null | undefined;
-}
