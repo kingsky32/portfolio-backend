@@ -29,7 +29,7 @@ class Projects extends BaseEntity {
   title: string;
 
   @Column({ type: 'text', nullable: true })
-  caption: string;
+  description: string;
 
   @Column({ type: 'text', nullable: true })
   meta: string;

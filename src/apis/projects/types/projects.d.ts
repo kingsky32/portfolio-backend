@@ -15,7 +15,7 @@ export interface ProjectProps {
   type?: ProjectTypeTypes;
   platform?: ProjectPlatformType;
   title?: string;
-  caption?: string;
+  description?: string;
   meta?: string;
   thumbnail?: number;
   github?: string;
