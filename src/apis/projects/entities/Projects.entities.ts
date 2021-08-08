@@ -13,7 +13,7 @@ import {
 import Files from '../../files/entities/Files.entities';
 import Codes from '../../codes/entities/Code.entities';
 import { CodeProps } from '../../codes/types/codes';
-import { ProjectPlatformType } from '../types/projects';
+import { ProjectPlatformType, ProjectTypeTypes } from '../types/projects';
 
 @Entity()
 class Projects extends BaseEntity {
@@ -22,6 +22,9 @@ class Projects extends BaseEntity {
 
   @Column({ type: 'int', nullable: true })
   accountId: number;
+
+  @ManyToOne(type => Codes, code => code.code, { nullable: true })
+  type: ProjectTypeTypes;
 
   @ManyToOne(type => Codes, code => code.code, { nullable: true })
   platform: ProjectPlatformType;
