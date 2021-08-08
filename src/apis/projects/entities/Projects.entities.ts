@@ -3,13 +3,17 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   OneToMany,
+  OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import Files from '../../files/entities/Files.entities';
 import Codes from '../../codes/entities/Code.entities';
 import { CodeProps } from '../../codes/types/codes';
-import { ProjectPlatformType, ProjectTypeTypes } from '../types/projects';
+import { ProjectPlatformType } from '../types/projects';
 
 @Entity()
 class Projects extends BaseEntity {
@@ -19,10 +23,7 @@ class Projects extends BaseEntity {
   @Column({ type: 'int', nullable: true })
   accountId: number;
 
-  @Column({ type: 'text', nullable: true })
-  type: ProjectTypeTypes;
-
-  @Column({ type: 'text', nullable: true })
+  @ManyToOne(type => Codes, code => code.code, { nullable: true })
   platform: ProjectPlatformType;
 
   @Column({ type: 'text', nullable: true })
@@ -34,7 +35,8 @@ class Projects extends BaseEntity {
   @Column({ type: 'text', nullable: true })
   meta: string;
 
-  @Column({ type: 'int', nullable: true })
+  @OneToOne(type => Files, file => file.id, { nullable: true })
+  @JoinColumn()
   thumbnail: number;
 
   @Column({ type: 'text', nullable: true })
@@ -46,10 +48,10 @@ class Projects extends BaseEntity {
   @OneToMany(type => Codes, code => code.code)
   tools: CodeProps[];
 
-  @Column({ type: 'date', nullable: true })
+  @Column({ type: 'timestamptz', nullable: true })
   startAt: Date;
 
-  @Column({ type: 'date', nullable: true })
+  @Column({ type: 'timestamptz', nullable: true })
   endAt: Date;
 
   @CreateDateColumn()

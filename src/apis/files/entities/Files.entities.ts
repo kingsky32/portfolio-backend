@@ -5,7 +5,7 @@ class Files extends BaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'text', primary: true })
+  @Column({ type: 'text' })
   url: string;
 
   @Column({ type: 'text' })
