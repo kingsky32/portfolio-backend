@@ -12,7 +12,8 @@
     "prebuild": "rm -rf dist",
     "build": "tsc",
     "postbuild": "cd src && copy ./apis/**/*.graphql ../dist/apis",
-    "start": "cd dist && node ."
+    "start": "cd dist && node .",
+    "pm2": "pm2 start npm -- start --name portfolio-server --watch --log ./log "
   },
   "dependencies": {
     "@graphql-toolkit/schema-merging": "^0.10.7",
