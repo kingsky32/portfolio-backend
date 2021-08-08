@@ -1,5 +1,5 @@
 import { CodeProps } from './../../types/codes.d';
-import Codes from '../../entities/Code.entities';
+import Codes from '../../entities/Codes.entities';
 
 export default {
   Mutation: {

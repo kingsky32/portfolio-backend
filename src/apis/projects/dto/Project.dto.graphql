@@ -3,15 +3,15 @@ scalar Date
 type Project {
   id: Int
   accountId: Int
-  type: String
-  platform: String
+  type: Code
+  platform: Code
   title: String
   description: String
   meta: String
-  thumbnail: Int
+  thumbnail: File
   github: String
   page: String
-  tools: [String]
+  tools: [Code]
   startAt: Date
   endAt: Date
   createdAt: Date

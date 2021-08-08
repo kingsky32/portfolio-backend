@@ -1,4 +1,4 @@
-import Codes from '../../entities/Code.entities';
+import Codes from '../../entities/Codes.entities';
 import { CodeMutationProps, CodeProps } from '../../types/codes';
 
 export default {

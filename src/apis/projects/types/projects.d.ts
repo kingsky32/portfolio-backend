@@ -1,26 +1,19 @@
-import { CodeProps } from './../../codes/types/codes.d';
-export enum ProjectPlatformType {
-  'web',
-  'app',
-}
-
-export enum ProjectTypeTypes {
-  'develop',
-  'design',
-}
+import { FileProps } from '../../files/types/files';
+import { CodeProps } from '../../codes/types/codes';
+import { ToolProps } from '../../tools/types/tools';
 
 export interface ProjectProps {
   id: number;
   accountId: number;
-  type?: ProjectTypeTypes;
-  platform?: ProjectPlatformType;
+  type?: CodeProps;
+  platform?: CodeProps;
   title?: string;
   description?: string;
   meta?: string;
-  thumbnail?: number;
+  thumbnail?: FileProps;
   github?: string;
   page?: string;
-  tools?: CodeProps[];
+  tools?: ToolProps[];
   startAt?: Date;
   endAt?: Date;
   createdAt: Date;

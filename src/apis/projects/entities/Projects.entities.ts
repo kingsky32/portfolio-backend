@@ -3,17 +3,15 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  getRepository,
   JoinColumn,
   ManyToOne,
-  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import Files from '../../files/entities/Files.entities';
-import Codes from '../../codes/entities/Code.entities';
-import { CodeProps } from '../../codes/types/codes';
-import { ProjectPlatformType, ProjectTypeTypes } from '../types/projects';
+import Codes from '../../codes/entities/Codes.entities';
 
 @Entity()
 class Projects extends BaseEntity {
@@ -24,10 +22,10 @@ class Projects extends BaseEntity {
   accountId: number;
 
   @ManyToOne(type => Codes, code => code.code, { nullable: true })
-  type: ProjectTypeTypes;
+  type: Codes;
 
   @ManyToOne(type => Codes, code => code.code, { nullable: true })
-  platform: ProjectPlatformType;
+  platform: Codes;
 
   @Column({ type: 'text', nullable: true })
   title: string;
@@ -40,7 +38,7 @@ class Projects extends BaseEntity {
 
   @OneToOne(type => Files, file => file.id, { nullable: true })
   @JoinColumn()
-  thumbnail: number;
+  thumbnail: Files;
 
   @Column({ type: 'text', nullable: true })
   github: string;
@@ -48,8 +46,8 @@ class Projects extends BaseEntity {
   @Column({ type: 'text', nullable: true })
   page: string;
 
-  @OneToMany(type => Codes, code => code.code)
-  tools: CodeProps[];
+  @Column({ type: 'text', array: true, nullable: true })
+  tools: Codes[];
 
   @Column({ type: 'timestamptz', nullable: true })
   startAt: Date;
@@ -62,6 +60,9 @@ class Projects extends BaseEntity {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  static findAll = () =>
+    getRepository(Projects).find({ relations: ['thumbnail', 'type', 'platform'] });
 }
 
 export default Projects;

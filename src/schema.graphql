@@ -4,7 +4,7 @@ type Mutation {
   UpdateCode(code: String!, label: String!): Code!
   CreateFile(file: Upload!): File!
   SendMail(from: String!, to: String!, subject: String, text: String): Boolean!
-  CreateProject(type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Project
+  CreateProject(type: String, platform: String, description: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Project
   DeleteProject(id: Int!): Project!
   UpdateProject(id: Int!, type: String, platform: String, title: String, thumbnail: Int, github: String, page: String, tools: [String], startAt: Date, endAt: Date): Project!
 }
@@ -36,15 +36,15 @@ scalar Date
 type Project {
   id: Int
   accountId: Int
-  type: String
-  platform: String
+  type: Code
+  platform: Code
   title: String
   description: String
   meta: String
-  thumbnail: Int
+  thumbnail: File
   github: String
   page: String
-  tools: [String]
+  tools: [Code]
   startAt: Date
   endAt: Date
   createdAt: Date
